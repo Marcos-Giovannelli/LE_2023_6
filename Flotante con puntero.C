@@ -1,27 +1,23 @@
 #include <stdio.h>
 
-float num;
+float hexa;
 
-void floatAbinario(float numero) {
+void conversion_hexa(float numero) {
     unsigned char *puntero = (unsigned char *)&numero;
     
     printf("Valor flotante: %f\n", numero);
     
-    printf("Representación binaria: ");
-    for (int a = sizeof(float) - 1; a >= 0; a--) {
-        for (int b = 7; b >= 0; b--) {
-            unsigned char bit = (puntero[a] >> b) & 1;
-            printf("%u", bit);
-        }
+    printf("Representación hexadecimal: 0x");
+    for (int i = sizeof(float) - 1; i >= 0; i--) {
+        printf("%02X", puntero[i]);
     }
     printf("\n");
 }
 
 int main() {
-  printf("Ingresar un valor decimal:");
-  scanf("%f", &num);
-    float valor = num;
-    floatAbinario(valor);
-    
+  printf("Ingrese un valor decimal:");
+  scanf("%f", &hexa);
+    float valor = hexa;
+    conversion_hexa(valor);
     return 0;
 }
